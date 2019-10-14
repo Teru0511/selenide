@@ -1,4 +1,3 @@
-
 import static com.codeborne.selenide.Selenide.*;
 
 import org.junit.BeforeClass;
@@ -9,7 +8,7 @@ import com.codeborne.selenide.Configuration;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class googleSearch {
+public class SelenideSampleTest {
 
     @BeforeClass
     public static void beforeClass() {
