@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MinkaraPartsSearchTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-10-15T16:07:11" hostname="HUANGnoMacBook-ea.local" time="44.086">
+<testsuite name="MinkaraPartsSearchTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-10-20T06:08:48" hostname="HUANGnoMacBook-ea.local" time="65.371">
   <properties/>
-  <testcase name="carSearchTest" classname="MinkaraPartsSearchTest" time="26.706"/>
-  <testcase name="keywordSearchTest" classname="MinkaraPartsSearchTest" time="17.38"/>
+  <testcase name="categorySearchTest" classname="MinkaraPartsSearchTest" time="19.182"/>
+  <testcase name="carSearchTest" classname="MinkaraPartsSearchTest" time="17.136"/>
+  <testcase name="makerSearchTest" classname="MinkaraPartsSearchTest" time="14.228"/>
+  <testcase name="keywordSearchTest" classname="MinkaraPartsSearchTest" time="14.823"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-情報: No webdriver is bound to current thread: 10 - let's create a new webdriver [水 10 16 01:07:11 JST 2019]
-Starting ChromeDriver 77.0.3865.40 (f484704e052e0b556f8030b65b953dce96503217-refs/branch-heads/3865@{#442}) on port 42304
+情報: No webdriver is bound to current thread: 10 - let's create a new webdriver [日 10 20 15:08:48 JST 2019]
+Starting ChromeDriver 77.0.3865.40 (f484704e052e0b556f8030b65b953dce96503217-refs/branch-heads/3865@{#442}) on port 15625
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-情報: Detected dialect: W3C [水 10 16 01:07:13 JST 2019]
-情報: Set browser size to 1366x768 [水 10 16 01:07:13 JST 2019]
-情報: BrowserName=chrome Version=77.0.3865.90 Platform=MAC [水 10 16 01:07:14 JST 2019]
-情報: Selenide v. 5.3.1 [水 10 16 01:07:14 JST 2019]
-情報: Selenium WebDriver v. 3.141.59 build time: 2018-11-14T08:17:03 [水 10 16 01:07:14 JST 2019]
-情報: Create webdriver in current thread 10: ChromeDriver -> ChromeDriver: chrome on MAC (d25fc0301924acaabde150565be1de24) [水 10 16 01:07:14 JST 2019]
+情報: Detected dialect: W3C [日 10 20 15:08:50 JST 2019]
+情報: Set browser size to 1366x768 [日 10 20 15:08:50 JST 2019]
+情報: BrowserName=chrome Version=77.0.3865.120 Platform=MAC [日 10 20 15:08:51 JST 2019]
+情報: Selenide v. 5.3.1 [日 10 20 15:08:51 JST 2019]
+情報: Selenium WebDriver v. 3.141.59 build time: 2018-11-14T08:17:03 [日 10 20 15:08:51 JST 2019]
+情報: Create webdriver in current thread 10: ChromeDriver -> ChromeDriver: chrome on MAC (efa0cc5e0f6509891d872f4766e03afd) [日 10 20 15:08:51 JST 2019]
 ]]></system-err>
 </testsuite>
