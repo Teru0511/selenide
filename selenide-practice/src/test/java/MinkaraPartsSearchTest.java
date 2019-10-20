@@ -22,13 +22,13 @@ public class MinkaraPartsSearchTest {
 	}
 
 	@Before
-	public void iniPage() {
+	public void setUp() {
 		open("https://minkara.carview.co.jp");
 		$("#top_navi_parts").click();
 	}
 
 	@Test
-	public void keywordSearchTest() {
+	public void testKeywordSearch() {
 		$("#_ctl0_CPH1_Searcher_txtKeyword").sendKeys("bridgestone");
 		$("#pr_search > dd:nth-child(8) > input").click();
 
@@ -38,7 +38,7 @@ public class MinkaraPartsSearchTest {
 	}
 
 	@Test
-	public void carSearchTest() {
+	public void testCarSearch() {
 		$(withText("車種を選択")).click();
 		switchTo().frame("TB_iframeContent");
 		$("#ddlMaker").selectOption("トヨタ");
@@ -50,7 +50,7 @@ public class MinkaraPartsSearchTest {
 	}
 
 	@Test
-	public void categorySearchTest() {
+	public void testCategorySearch() {
 		$(withText("カテゴリを選択")).click();
 		switchTo().frame("TB_iframeContent");
 		$(withText("タイヤ・ホイール")).click();
@@ -62,7 +62,7 @@ public class MinkaraPartsSearchTest {
 	}
 
 	@Test
-	public void makerSearchTest() {
+	public void testMakerSearch() {
 		$(withText("パーツメーカーを選択")).click();
 		switchTo().frame("TB_iframeContent");
 		$("#txtPartsMaker").sendKeys("bridgestone");
