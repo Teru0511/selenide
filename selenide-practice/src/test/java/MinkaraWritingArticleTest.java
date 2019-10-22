@@ -34,28 +34,28 @@ public class MinkaraWritingArticleTest {
 		$("#head_top_btn_mypage").click();
 	}
 
-	//@Test
-	//public void testWritingBlog() {
-		//$("#mypage_navi_blog").click();
-		//$("#_ctl0_CPH2_MainEdit2_Edit1_TextBox_Title").sendKeys("Blog" + articleName);
-		//$("#_ctl0_CPH2_MainEdit2_Edit1_FileUpLoad_ImageOldSupport1_FileUpload1")
-			//.sendKeys("/Users/teru/git/selenide-sample/selenide-practice/img/cat005.jpg");
-		//$("#_ctl0_CPH2_MainEdit2_Edit1_TextBox_Body").sendKeys("明日もいい日でありますように");
-		//$("#_ctl0_CPH2_MainEdit2_Edit1_TagEntry1_boxTag").sendKeys("異世界 アニメ");
-		//$("#_ctl0_CPH2_MainEdit2_Edit1_ddlPublishScope").selectOption("みん友まで公開");
-		//$("#_ctl0_CPH2_MainEdit2_Edit1_Button_Commit").click();
-		//$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
+	@Test
+	public void testWritingBlog() {
+		$("#mypage_navi_blog").click();
+		$("#_ctl0_CPH2_MainEdit2_Edit1_TextBox_Title").sendKeys("Blog" + articleName);
+		$("#_ctl0_CPH2_MainEdit2_Edit1_FileUpLoad_ImageOldSupport1_FileUpload1")
+			.sendKeys("/Users/teru/git/selenide-sample/selenide-practice/img/cat005.jpg");
+		$("#_ctl0_CPH2_MainEdit2_Edit1_TextBox_Body").sendKeys("明日もいい日でありますように");
+		$("#_ctl0_CPH2_MainEdit2_Edit1_TagEntry1_boxTag").sendKeys("異世界 アニメ");
+		$("#_ctl0_CPH2_MainEdit2_Edit1_ddlPublishScope").selectOption("みん友まで公開");
+		$("#_ctl0_CPH2_MainEdit2_Edit1_Button_Commit").click();
+		$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
 
 		//投稿が正常に完了したのかどうかを確認する
-		//$("#_ctl0_CPH2_MainThanks_HL_Nav1").click();
-		//$("h1.contentsTitle").shouldHave(text("Blog" + articleName));
+		$("#_ctl0_CPH2_MainThanks_HL_Nav1").click();
+		$("h1.contentsTitle").shouldHave(text("Blog" + articleName));
 
 		//投稿を削除する
-		//$(withText("編集")).click();
-		//$("#_ctl0_CPH2_MainEdit2_Edit1_Button_Delete").click();
-		//confirm();
-		//$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
-	//}
+		$(withText("編集")).click();
+		$("#_ctl0_CPH2_MainEdit2_Edit1_Button_Delete").click();
+		confirm();
+		$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
+	}
 
 	@Test
 	public void testWritingParts() {
@@ -89,16 +89,77 @@ public class MinkaraWritingArticleTest {
 
 		//投稿が正常に完了したのかどうかを確認する
 		$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
-	    String partsURL = WebDriverRunner.getWebDriver().getCurrentUrl();
-	    partsURL = partsURL.replace( "thanks.aspx?type=1", "parts.aspx");
-	    open(partsURL);
-	    $(".userCarPhotoMemo").shouldHave(text("パーツ投稿テスト"));
+		String partsURL = WebDriverRunner.getWebDriver().getCurrentUrl();
+		partsURL = partsURL.replace( "thanks.aspx?type=1", "parts.aspx");
+		open(partsURL);
+		$(".userCarPhotoMemo").shouldHave(text("パーツ投稿テスト"));
 
-	    //投稿を削除する
+		//投稿を削除する
 	  	$(withText("編集")).click();
 	  	$("#delete").click();
 	  	confirm();
 	}
 
+	@Test
+	public void testWritingNote() {
+		$("#mypage_navi_note").click();
+		$("#_ctl0_CPH1_btnNewEditCarContents").click();
+		$(withText("ホイール補修")).click();
+		$("#_ctl0_CPH2_MainNoteEdit2_boxTitle").sendKeys("整備手帳" + articleName);
+		switchTo().frame("_ctl0_CPH2_MainNoteEdit2_iframeImage_1");
+		$("#fileupload > div.div_buttons > div > div > input")
+			.sendKeys("/Users/teru/git/selenide-sample/selenide-practice/img/cat006.jpg");
+		switchTo().parentFrame();
+		$("#_ctl0_CPH2_MainNoteEdit2_boxComment_1").sendKeys("テスト用ネコ");
+		$("#_ctl0_CPH2_MainNoteEdit2_btnCheck").click();
+		$("#_ctl0_CPH2_MainNoteEdit2_But_PreviewEntry").click();
+
+		//投稿が正常に完了したのかどうかを確認する
+		$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
+		String partsURL = WebDriverRunner.getWebDriver().getCurrentUrl();
+		partsURL = partsURL.replace( "thanks.aspx?type=2", "note.aspx");
+		open(partsURL);
+		$("h1.contentsTitle").shouldHave(text("整備手帳" + articleName));
+
+		//投稿を削除する
+	  	$(withText("編集")).click();
+	  	$("#_ctl0_CPH2_MainNoteEdit2_btnDelete").click();
+	  	confirm();
+	  	$("#_ctl0_CPH2_MainNoteEdit2_btnFullDelete").click();
+	  	$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
+	}
+
+	@Test
+	public void testWritingCarReview() {
+		$("#mypage_navi_review").click();
+		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_TextBox_Title").sendKeys("Review" + articleName);
+		$("#aSalesGradeList").click();
+		switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
+		switchTo().frame("TB_SalesGradeList_iframeContent");
+		$(withText("バイク")).click();
+		$(withText("カワサキ")).click();
+		$(withText("Ninja250R")).click();
+		$("input.submit-button").click();
+		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_ddlModelYearNone").selectOption(1);
+		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_boxModelGradeNone").sendKeys("不明");
+		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_radRide_TestDrive").selectRadio("radRide_TestDrive");
+		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_TextBox_Satisfaction").sendKeys("視界が広く運転しやすい");
+		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_TextBox_Dissatisfaction").sendKeys("荷室が狭い");
+		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_TextBox_Overall").sendKeys("良いバイクだ");
+		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_FileUpLoad_ImageOldSupport1_FileUpload1")
+			.sendKeys("/Users/teru/git/selenide-sample/selenide-practice/img/cat006.jpg");
+		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_Button_Commit").click();
+
+		//投稿が正常に完了したのかどうかを確認する
+		$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
+		$(withText("記事へ")).click();
+		$("h1.contentsTitle").shouldHave(text("Review" + articleName));
+
+		//投稿を削除する
+	  	$(withText("編集")).click();
+	  	$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_Button_Delete").click();
+	  	confirm();
+	  	$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
+	}
 
 }
