@@ -116,9 +116,9 @@ public class MinkaraWritingArticleTest {
 
 		//投稿が正常に完了したのかどうかを確認する
 		$(".Message01").shouldHave(text("ありがとうございます。投稿を受け付けました。"));
-		String partsURL = WebDriverRunner.getWebDriver().getCurrentUrl();
-		partsURL = partsURL.replace( "thanks.aspx?type=2", "note.aspx");
-		open(partsURL);
+		String noteURL = WebDriverRunner.getWebDriver().getCurrentUrl();
+		noteURL = noteURL.replace( "thanks.aspx?type=2", "note.aspx");
+		open(noteURL);
 		$("h1.contentsTitle").shouldHave(text("整備手帳" + articleName));
 
 		//投稿を削除する
