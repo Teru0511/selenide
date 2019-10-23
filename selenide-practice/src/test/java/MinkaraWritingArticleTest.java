@@ -2,6 +2,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
+import java.io.File;
 import java.time.LocalDateTime;
 
 import org.junit.Before;
@@ -16,6 +17,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class MinkaraWritingArticleTest {
 	private String articleName = LocalDateTime.now().toString();
+	private File file = new File("img/cat006.jpg");
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -28,8 +30,8 @@ public class MinkaraWritingArticleTest {
 	public void setUp() {
 		open("https://minkara.carview.co.jp");
 		$("#head_top_login").click();
-		$("#ctl00_ContentPlaceHolder1_NewLoginBox1_Text_Accont").sendKeys("mint01");
-		$("#ctl00_ContentPlaceHolder1_NewLoginBox1_Text_Password").sendKeys("qatest1");
+		$("#ctl00_ContentPlaceHolder1_NewLoginBox1_Text_Accont").sendKeys("ID");
+		$("#ctl00_ContentPlaceHolder1_NewLoginBox1_Text_Password").sendKeys("Password");
 		$("#ctl00_ContentPlaceHolder1_NewLoginBox1_ImageButton_Login").click();
 		$("#head_top_btn_mypage").click();
 	}
@@ -39,7 +41,7 @@ public class MinkaraWritingArticleTest {
 		$("#mypage_navi_blog").click();
 		$("#_ctl0_CPH2_MainEdit2_Edit1_TextBox_Title").sendKeys("Blog" + articleName);
 		$("#_ctl0_CPH2_MainEdit2_Edit1_FileUpLoad_ImageOldSupport1_FileUpload1")
-			.sendKeys("/Users/teru/git/selenide-sample/selenide-practice/img/cat005.jpg");
+			.sendKeys(file.getAbsolutePath());
 		$("#_ctl0_CPH2_MainEdit2_Edit1_TextBox_Body").sendKeys("明日もいい日でありますように");
 		$("#_ctl0_CPH2_MainEdit2_Edit1_TagEntry1_boxTag").sendKeys("異世界 アニメ");
 		$("#_ctl0_CPH2_MainEdit2_Edit1_ddlPublishScope").selectOption("みん友まで公開");
@@ -62,7 +64,7 @@ public class MinkaraWritingArticleTest {
 		$("#mypage_navi_parts").click();
 		$("#_ctl0_CPH1_btnNewEditCarContents").click();
 		$("#mainImageArea > div > div > div > input.inputImage")
-			.sendKeys("/Users/teru/git/selenide-sample/selenide-practice/img/cat005.jpg");
+			.sendKeys(file.getAbsolutePath());
 		$("#partsSelect").click();
 		$("div.category").click();
 		$("#categoryLargeCategoryList > li:nth-child(1)").click();
@@ -74,7 +76,7 @@ public class MinkaraWritingArticleTest {
 		$("#btnPartsFinish").click();
 		$("#mainText").sendKeys("パーツ投稿テスト");
 		$("#appendImageArea > div > div > div > input.inputImage")
-			.sendKeys("/Users/teru/git/selenide-sample/selenide-practice/img/cat006.jpg");
+			.sendKeys(file.getAbsolutePath());
 		$("#purchaseRouteType").selectOption(2);
 		$("#purchaseRoute").selectOption(3);
 		$("#purchaseRouteMemo").sendKeys("割引10%");
@@ -108,7 +110,7 @@ public class MinkaraWritingArticleTest {
 		$("#_ctl0_CPH2_MainNoteEdit2_boxTitle").sendKeys("整備手帳" + articleName);
 		switchTo().frame("_ctl0_CPH2_MainNoteEdit2_iframeImage_1");
 		$("#fileupload > div.div_buttons > div > div > input")
-			.sendKeys("/Users/teru/git/selenide-sample/selenide-practice/img/cat006.jpg");
+			.sendKeys(file.getAbsolutePath());
 		switchTo().parentFrame();
 		$("#_ctl0_CPH2_MainNoteEdit2_boxComment_1").sendKeys("テスト用ネコ");
 		$("#_ctl0_CPH2_MainNoteEdit2_btnCheck").click();
@@ -147,7 +149,7 @@ public class MinkaraWritingArticleTest {
 		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_TextBox_Dissatisfaction").sendKeys("荷室が狭い");
 		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_TextBox_Overall").sendKeys("良いバイクだ");
 		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_FileUpLoad_ImageOldSupport1_FileUpload1")
-			.sendKeys("/Users/teru/git/selenide-sample/selenide-practice/img/cat006.jpg");
+			.sendKeys(file.getAbsolutePath());
 		$("#_ctl0_CPH2_MainReviewEdit2_ReviewEdit1_Button_Commit").click();
 
 		//投稿が正常に完了したのかどうかを確認する
